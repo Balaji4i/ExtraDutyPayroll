@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Oando_AM"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.am.Oando_AMImpl"
+  DefClass="model.am.Oando_AMDefImpl"
+  ComponentInterface="model.am.common.Oando_AM">
+  <DesignTime>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.am.Oando_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="DutyAllowance_VO"
+    ViewObjectName="model.vo.DutyAllowance_VO">
+    <ViewCriteriaUsage
+      Name="findById"
+      FullName="model.vo.DutyAllowance_VO.findById"/>
+    <ParameterMap>
+      <PIMap Variable="BV_Id">
+        <TransientExpression
+          Name="ExpressionScript"><![CDATA[adf.context.pageFlowScope.headerId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="Users_ROVO"
+    ViewObjectName="model.ro.Users_ROVO"/>
+  <ViewUsage
+    Name="Payroll_ROVO"
+    ViewObjectName="model.ro.Payroll_ROVO">
+    <ParameterMap>
+      <PIMap Variable="bv_Id">
+        <TransientExpression
+          Name="ExpressionScript"><![CDATA[adf.context.pageFlowScope.headerId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="DutyAllowance_VO1"
+    ViewObjectName="model.vo.DutyAllowance_VO"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="filterUser"
+      MethodName="filterUser">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="getPersonId"
+      MethodName="getPersonId">
+      <Return
+        Name="_return_type_"
+        Type="java.math.BigDecimal"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>
